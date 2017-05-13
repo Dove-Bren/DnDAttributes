@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = DnDAttributesMod.MODID, version = DnDAttributesMod.VERSION)
+@Mod(modid = DnDAttributesMod.MODID, name = "D&D Attribute Mod", version = DnDAttributesMod.VERSION, guiFactory = "com.skyisland.dndattributes.config.ConfigGuiFactory")
 public class DnDAttributesMod
 {
 	

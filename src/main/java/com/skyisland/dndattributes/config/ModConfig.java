@@ -163,7 +163,7 @@ public class ModConfig {
 	private Configuration base;
 	
 	public ModConfig(Configuration base) {
-		this.base = base;
+		this.setBase(base);
 		ModConfig.config = this;
 		
 		initConfig();
@@ -172,24 +172,24 @@ public class ModConfig {
 	
 	private void initConfig() {
 		for (Key key : Key.values())
-		if (!base.hasKey(key.getCategory(), key.getKey())) {
+		if (!getBase().hasKey(key.getCategory(), key.getKey())) {
 			if (key.getDefault() instanceof Float) {
-				base.getFloat(key.getKey(), key.getCategory(), (Float) key.getDefault(),
+				getBase().getFloat(key.getKey(), key.getCategory(), (Float) key.getDefault(),
 						Float.MIN_VALUE, Float.MAX_VALUE, key.getDescription());
 			}
 			else if (key.getDefault() instanceof Boolean)
-				base.getBoolean(key.getKey(), key.getCategory(), (Boolean) key.getDefault(),
+				getBase().getBoolean(key.getKey(), key.getCategory(), (Boolean) key.getDefault(),
 						key.getDescription());
 			else if (key.getDefault() instanceof Integer)
-				base.getInt(key.getKey(), key.getCategory(), (Integer) key.getDefault(),
+				getBase().getInt(key.getKey(), key.getCategory(), (Integer) key.getDefault(),
 						Integer.MIN_VALUE, Integer.MAX_VALUE, key.getDescription());
 			else
-				base.getString(key.getKey(), key.getCategory(), key.getDefault().toString(),
+				getBase().getString(key.getKey(), key.getCategory(), key.getDefault().toString(),
 						key.getDescription());
 		}
 		
-		if (base.hasChanged())
-			base.save();
+		if (getBase().hasChanged())
+			getBase().save();
 	}
 	
 	/**************************
@@ -200,27 +200,27 @@ public class ModConfig {
 	protected boolean getBooleanValue(Key key) {
 		//DOESN'T cast check. Know what you're doing before you do it
 		
-		return base.getBoolean(key.getKey(), key.getCategory(), (Boolean) key.getDefault(),
+		return getBase().getBoolean(key.getKey(), key.getCategory(), (Boolean) key.getDefault(),
 		key.getDescription());
 	}
 	
 	protected float getFloatValue(Key key) {
 		//DOESN'T cast check. Know what you're doing before you do it
 		
-		return base.getFloat(key.getKey(), key.getCategory(), (Float) key.getDefault(),
+		return getBase().getFloat(key.getKey(), key.getCategory(), (Float) key.getDefault(),
 		Float.MIN_VALUE, Float.MAX_VALUE, key.getDescription());
 	}
 	
 	protected int getIntValue(Key key) {
 		//DOESN'T cast check. Know what you're doing before you do it
 		
-		return base.getInt(key.getKey(), key.getCategory(), (Integer) key.getDefault(),
+		return getBase().getInt(key.getKey(), key.getCategory(), (Integer) key.getDefault(),
 		Integer.MIN_VALUE, Integer.MAX_VALUE, key.getDescription());
 	}
 	
 	protected String getStringValue(Key key) {
 		//DOESN'T cast check. Know what you're doing before you do it
-		return base.getString(key.getKey(), key.getCategory(), (String) key.getDefault(),
+		return getBase().getString(key.getKey(), key.getCategory(), (String) key.getDefault(),
 				key.getDescription());
 	}
 	
@@ -234,6 +234,16 @@ public class ModConfig {
 	
 	public int showInvInfoColor() {
 		return getIntValue(Key.SHOW_INV_INFO_COLOR);
+	}
+
+
+	public Configuration getBase() {
+		return base;
+	}
+
+
+	public void setBase(Configuration base) {
+		this.base = base;
 	}
 		
 }
