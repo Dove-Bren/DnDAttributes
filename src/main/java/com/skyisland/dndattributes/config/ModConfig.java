@@ -17,7 +17,9 @@ import net.minecraftforge.common.config.Configuration;
 public class ModConfig {
 	
 	public static enum Key {
-		TAG_MOBS(Category.SERVER, "tagMobs", false, true, "Tag non-player entities with DnD attributes");
+		TAG_MOBS(Category.SERVER, "tagMobs", false, true, "Tag non-player entities with DnD attributes"),
+		SHOW_INV_INFO(Category.DISPLAY, "showInvInfo", true, false, "Display attribute info popup in inventory screen"),
+		SHOW_INV_INFO_COLOR(Category.DISPLAY, "showInvInfoColor", 0x00, false, "Attribute text color as RGB int. E.G. 0xFF0000 is RED. 0xFFFFFF is white. 0x000000 is black.");
 		
 		public static enum Category {
 			SERVER("server", "Core properties that MUST be syncronized bytween the server and client. Client values ignored"),
@@ -224,6 +226,14 @@ public class ModConfig {
 	
 	public boolean getTagAllMobs() {
 		return getBooleanValue(Key.TAG_MOBS);
+	}
+	
+	public boolean showInvInfo() {
+		return getBooleanValue(Key.SHOW_INV_INFO);
+	}
+	
+	public int showInvInfoColor() {
+		return getIntValue(Key.SHOW_INV_INFO_COLOR);
 	}
 		
 }

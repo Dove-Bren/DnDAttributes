@@ -1,5 +1,7 @@
 package com.skyisland.dndattributes.proxy;
 
+import com.skyisland.dndattributes.client.gui.OverlayHandler;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 
 public class ClientProxy extends CommonProxy {
@@ -29,7 +31,7 @@ public class ClientProxy extends CommonProxy {
 	 * Handle interaction with other mods, complete your setup based on this.
 	 */
 	public void postInit() {
-		;
+		new OverlayHandler();
 	}
 	
 	@Override

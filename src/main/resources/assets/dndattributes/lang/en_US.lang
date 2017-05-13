@@ -1,4 +1,7 @@
-text.roller_gui.roll_20=Roll D20
-text.roller_gui.roll_10=Roll D10
-text.roller_gui.roll_4=Roll D4
-text.roller_gui.roll_arb=Roll Num
+text.overview_gui.strength=Strength
+text.overview_gui.constitution=Constitution
+text.overview_gui.dexterity=Dexterity
+text.overview_gui.intelligence=Intelligence
+text.overview_gui.wisdom=Wisdom
+text.overview_gui.charisma=Charisma
+text.overview_gui.attrerror=No Attributes?
