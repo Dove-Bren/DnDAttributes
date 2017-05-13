@@ -3,11 +3,14 @@ package com.skyisland.dndattributes;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.skyisland.dndattributes.capability.AttributeProvider;
+import com.skyisland.dndattributes.capability.IDnDAttributes;
 import com.skyisland.dndattributes.config.ModConfig;
 import com.skyisland.dndattributes.listener.PlayerListener;
 import com.skyisland.dndattributes.network.NetworkHandler;
 import com.skyisland.dndattributes.proxy.CommonProxy;
 
+import net.minecraft.entity.Entity;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -53,5 +56,16 @@ public class DnDAttributesMod
     @EventHandler
     public void postinit(FMLPostInitializationEvent event) {
     	proxy.postInit();
+    }
+    
+    /**
+     * Convenience wrapper. Pulls out DnDAttributes from an entity, if they have them
+     * @param e The entity to pull off of
+     * @return The attributes, if they exist. Otherwise, returns null
+     * Get a null you don't expect? Make sure the server and client configs match, AND
+     * that the config includes all the mobs you won't to be tagged.
+     */
+    public IDnDAttributes getAttributes(Entity e) {
+    	return e.getCapability(AttributeProvider.CAPABILITY, null);
     }
 }
