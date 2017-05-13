@@ -1,5 +1,7 @@
 package com.skyisland.dndattributes.capability;
 
+import com.skyisland.dndattributes.config.ModConfig;
+
 /**
  * Default implementation of the attributes interface
  * @author Skyler
@@ -13,6 +15,11 @@ public class DnDAttributes implements IDnDAttributes {
 	private int intelligence;
 	private int wisdom;
 	private int charisma;
+	
+	public DnDAttributes() {
+		strength = constitution = dexterity = intelligence = wisdom = charisma
+				= ModConfig.config.getDefaultAttributeValue();
+	}
 	
 	@Override
 	public int getStrength() {
